@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/sample_text"
+        android:textSize="24dp"
+        android:layout_marginTop="60dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="شرکت نمونه"
+        android:layout_centerHorizontal="true"
+         />
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/sample_text"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/send_with_doc"
+            android:text="ارسال تصویر با اسناد"
+            android:layout_gravity="center"
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"
+
+            />
+        <Button
+            android:tag="1"
+            android:onClick="BtnClick"
+            android:text="ارسال تصویر ۱"
+            android:layout_gravity="center"
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"
+
+            />
+        <Button
+            android:tag="2"
+            android:onClick="BtnClick"
+            android:text="ارسال تصویر ۲"
+            android:layout_gravity="center"
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"
+
+            />
+        <Button
+            android:tag="3"
+            android:onClick="BtnClick"
+            android:text="ارسال تصویر ۳"
+            android:layout_gravity="center"
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"
+
+            />
+        <Button
+            android:tag="4"
+            android:onClick="BtnClick"
+            android:text="ارسال تصویر ۴"
+            android:layout_gravity="center"
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"
+
+            />
+        <Button
+            android:tag="5"
+            android:onClick="BtnClick"
+            android:text="ارسال تصویر ۵"
+            android:layout_gravity="center"
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"
+
+            />
+        <Button
+            android:tag="6"
+            android:onClick="BtnClick"
+            android:text="ارسال تصویر ۶"
+            android:layout_gravity="center"
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"
+
+            />
+    </LinearLayout>
+
+</RelativeLayout>
