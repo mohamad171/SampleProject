@@ -1,0 +1,136 @@
+<!--
+ * CoreUI - Open Source Bootstrap Admin Template
+ * @version v1.0.0-alpha.6
+ * @link http://coreui.io
+ * Copyright (c) 2017 creativeLabs Łukasz Holeczek
+ * @license MIT
+ -->
+ <!DOCTYPE html>
+ <html lang="fa"  dir="rtl">
+ 
+ <head>
+     <meta charset="utf-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+     <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
+     <meta name="author" content="Łukasz Holeczek">
+     <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,AngularJS,Angular,Angular2,Angular 2,Angular4,Angular 4,jQuery,CSS,HTML,RWD,Dashboard,React,React.js,Vue,Vue.js">
+     {% load staticfiles %}
+     <link rel="shortcut icon" href="{% static 'website/img/favicon.png' %}">
+     <title>ورود به پنل مدیریت</title>
+ 
+     <!-- Icons -->
+     <link href="{% static 'website/css/font-awesome.min.css' %}" rel="stylesheet">
+     <link href="{% static 'website/css/simple-line-icons.css' %}" rel="stylesheet">
+     <link href="{% static 'website/css/bootstrapValidator.min.css' %}" rel="stylesheet">
+     <!-- Main styles for this application -->
+     <link href="{% static 'website/css/style.css' %}" rel="stylesheet">
+     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+ </head>
+ 
+ <body class="app flex-row align-items-center">
+     <div class="container">
+         <div class="row justify-content-center">
+             <div class="col-md-8">
+                 <div class="card-group mb-0">
+                     <div class="card p-4">
+                         <form id="loginForm">
+                         {% csrf_token %}
+                         
+                         <div class="card-body">
+                             <h1>ورود</h1>
+                             <p class="text-muted">ورود به حساب کاربری</p>
+                             <div class="input-group mb-3">
+                                 <span class="input-group-addon">@
+                                 </span>
+                                 <input type="text" class="form-control" name="email" placeholder="ایمیل">
+                             </div>
+                             <div class="input-group mb-4">
+                                 <span class="input-group-addon"><i class="icon-lock"></i>
+                                 </span>
+                                 <input type="password" class="form-control" name="password" placeholder="رمز عبور">
+                             </div>
+
+                             <div class="row">
+                                 <div class="col-6">
+                                     <button type="button" id="loginbtn" class="btn btn-primary px-4"> <div  id="btntxt">ورود</div> <i class="loading_ico fa fa-spin fa-spinner font-3xl" style="display: none"></i></button>
+                                 </div>
+{#                                 <div class="col-6 text-right">#}
+{#                                     <button type="button" class="btn btn-link px-0">یادآوری رمز عبور </button>#}
+{#                                 </div>#}
+                             </div>
+                         </div>
+
+                        </form>
+                     </div>
+
+                 </div>
+             </div>
+         </div>
+     </div>
+ 
+     <!-- Bootstrap and necessary plugins -->
+     
+     <script src="{% static 'website/bower_components/jquery/dist/jquery.min.js' %}"></script>
+     <script src="{% static 'website/bower_components/tether/dist/js/tether.min.js' %}"></script>
+     <script src="{% static 'website/bower_components/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+     <script src="{% static 'website/js/bootstrapValidator.js' %}"></script>
+ <script>
+$("#loginbtn").click(function(){
+            $("#btntxt").css("display","none");
+            $(this).attr("disabled", "disabled");
+            $(".loading_ico").css("display","block")
+
+
+            $.ajax({
+             url: "{% url 'login' %}",
+             data: $('form').serialize(),
+             method: "POST",
+             success: function(data){ 
+                 jdata = JSON.parse(data)
+                 if (jdata["status"] == "ok"){
+
+                         window.location.replace("{% url 'main' %}");
+                         $(".loading_ico").css("display","none")
+                    $("#btntxt").css("display","block");
+                 }
+                 else if(jdata["status"] == "incorrect"){
+                    swal({
+                        title: "اوپس!",
+                        text: "ایمیل و یا رمز عبور وارد شده صحیح نمیباشد",
+                        icon: "error",
+                        button: "دوباره",
+                        });
+                        $("#loginbtn").removeAttr("disabled");
+                        $(".loading_ico").css("display","none")
+                        $("#btntxt").css("display","block");
+                 }else if(jdata["status"] == "disable"){
+                    swal({
+                        title: "اوپس!",
+                        text: "حساب کاربری شما فعال نمیباشد لطفا ایمیل خود را بررسی کنید",
+                        icon: "error",
+                        button: "دوباره",
+                        });
+                        $("#loginbtn").removeAttr("disabled");
+                        $(".loading_ico").css("display","none")
+                        $("#btntxt").css("display","block");
+                 }else if(jdata["status"] == "NotExist"){
+                    swal({
+                        title: "اوپس!",
+                        text: "کاربری با این آدرس ایمیل یافت نشد",
+                        icon: "error",
+                        button: "دوباره",
+                        });
+                        $("#loginbtn").removeAttr("disabled");
+                        $(".loading_ico").css("display","none")
+                        $("#btntxt").css("display","block");
+                 }
+              }
+         });
+            
+        })
+ </script>
+ 
+ </body>
+ 
+ </html>

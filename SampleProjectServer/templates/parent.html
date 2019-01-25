@@ -1,0 +1,208 @@
+
+<!--
+ * CoreUI - Open Source Bootstrap Admin Template
+ * @version v1.0.0-alpha.6
+ * @link http://coreui.io
+ * Copyright (c) 2017 creativeLabs Łukasz Holeczek
+ * @license MIT
+ -->
+ <!DOCTYPE html>
+ <html lang="fa"  dir="rtl">
+ <head>
+
+     <meta charset="utf-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+     <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
+     <meta name="author" content="Łukasz Holeczek">
+     <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,AngularJS,Angular,Angular2,Angular 2,Angular4,Angular 4,jQuery,CSS,HTML,RWD,Dashboard,React,React.js,Vue,Vue.js">
+     {% load staticfiles %}
+     <link rel="shortcut icon" href="{% static 'website/img/favicon.png' %}">
+     
+     <title>  پروژه آزمایشی | {% block title %}   {% endblock %}</title>
+ 
+     <!-- Icons -->
+     <link href="{% static 'website/css/font-awesome.min.css' %}" rel="stylesheet">
+     <link href="{% static 'website/css/simple-line-icons.css' %}  " rel="stylesheet">
+
+     <link rel="shortcut icon" href="{% static 'website/CodeMirror/lib/codemirror.css' %}">
+ 
+     <!-- Main styles for this application -->
+     <link href="{% static 'website/css/style.css' %}" rel="stylesheet">
+     <link href="{% static 'website/css/bootstrap-colorpicker.min.css' %}" rel="stylesheet">
+     <link href="{% static 'website/css/fa-datepicker.css' %}" rel="stylesheet">
+ </head>
+ 
+
+ 
+ <body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
+     <header class="app-header navbar">
+        <button class="navbar-toggler mobile-sidebar-toggler d-lg-none mr-auto" type="button">☰</button>
+
+        <a class="navbar-brand" href="#"></a>
+
+
+{#        <ul class="nav navbar-nav ml-auto">#}
+{##}
+{#            <li class="nav-item dropdown">#}
+{#                <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">#}
+{#                    <img src="img/avatars/6.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">#}
+{##}
+{#                </a>#}
+{#                <div class="dropdown-menu dropdown-menu-right">#}
+{#                    <div class="dropdown-header text-center">#}
+{#                        <strong>حساب کاربری</strong>#}
+{#                    </div>#}
+{#                    <a class="dropdown-item" href="#"><i class="fa fa-bell-o"></i> بروزرسانی ها<span class="badge badge-info">42</span></a>#}
+{#                    <a class="dropdown-item" href="#"><i class="fa fa-envelope-o"></i> پیام ها<span class="badge badge-success">42</span></a>#}
+{#                    <a class="dropdown-item" href="#"><i class="fa fa-tasks"></i> کارها<span class="badge badge-danger">42</span></a>#}
+{#                    <a class="dropdown-item" href="#"><i class="fa fa-comments"></i> نظرات<span class="badge badge-warning">42</span></a>#}
+{#                    <div class="dropdown-header text-center">#}
+{#                        <strong>تنظیمات</strong>#}
+{#                    </div>#}
+{#                    <a class="dropdown-item" href="#"><i class="fa fa-user"></i> پروفایل</a>#}
+{#                    <a class="dropdown-item" href="#"><i class="fa fa-wrench"></i> تنظیمات</a>#}
+{#                    <a class="dropdown-item" href="#"><i class="fa fa-usd"></i> پرداخت ها<span class="badge badge-default">42</span></a>#}
+{#                    <a class="dropdown-item" href="#"><i class="fa fa-file"></i> پروژه ها<span class="badge badge-primary">42</span></a>#}
+{#                    <div class="divider"></div>#}
+{#                    <a class="dropdown-item" href="#"><i class="fa fa-shield"></i> قفل کردن حساب کاربری</a>#}
+{#                    <a class="dropdown-item" href="#"><i class="fa fa-lock"></i> خروج</a>#}
+{#                </div>#}
+{#            </li>#}
+{#        </ul>#}
+
+    </header>
+ 
+     <div class="app-body">
+         <div class="sidebar">
+             <nav class="sidebar-nav">
+                 <ul class="nav">
+
+                     <li class="nav-title">
+                         <p class="text">{{ user.first_name }} عزیز خوش آمدید</p>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'main' %}" class="nav-link"><i class="fa fa-home"></i>خانه</a>
+                        </li>
+                        
+                 </ul>
+             </nav>
+         </div>
+         <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-md" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">{% block modal_title %}{% endblock %}</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        {% block modal_content %}{% endblock %}
+                    </div>
+                    <div class="modal-footer">
+                        {% block modal_footer %}{% endblock %}
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+
+
+
+        <div class="modal fade" id="bigmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">{% block big_modal_title %}{% endblock %}</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        {% block big_modal_content %}{% endblock %}
+                    </div>
+                    <div class="modal-footer">
+                        {% block big_modal_footer %}{% endblock %}
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+
+
+
+
+
+
+
+         <main class="main">
+           
+             <!-- Breadcrumb -->
+             <ol class="breadcrumb">
+                 <li class="breadcrumb-item">میزکار</li>
+              
+                 <li class="breadcrumb-item active">{% block crumb %}{% endblock %}</li>
+ 
+                 <li style="float: left"><a href="{% url 'logout' %}" class="btn btn-danger" style="color: white;"><i class="fa fa-power-off"></i> خروج از حساب  </a></li>
+             </ol>
+ 
+ 
+             <div class="container-fluid">
+ 
+                 <div class="animated fadeIn">
+                     
+{% block content %}
+
+{% endblock %}
+
+
+
+                 
+                 </div>
+ 
+ 
+             </div>
+             <!-- /.conainer-fluid -->
+         </main>
+ 
+       
+ 
+     </div>
+ 
+     <footer class="app-footer ltr">
+         
+     </footer>
+ 
+     <!-- Bootstrap and necessary plugins -->
+     <script src="{% static 'website/bower_components/jquery/dist/jquery.min.js' %}"></script>
+     <script src="{% static 'website/bower_components/popper.js/dist/umd/popper.min.js' %}"></script>
+     <script src="{% static 'website/bower_components/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+     <script src="{% static 'website/bower_components/pace/pace.min.js' %}"></script>
+     <script src="{% static 'website/CodeMirror/lib/codemirror.js' %}"></script>
+     <script src="{% static 'website/js/chosen/chosen.jquery.min.js' %}"></script>
+     <!-- Plugins and scripts required by all views -->
+     <script src="{% static 'website/bower_components/chart.js/dist/Chart.min.js' %}"></script>
+ 
+     <!-- GenesisUI main scripts -->
+     <script src="{% static 'website/js/app.js' %}"></script>
+     <script src="{% static 'website/js/notify.js' %}"></script>
+     <script src="{% static 'website/js/fa-datepicker.js' %}"></script>
+     <script src="{% static 'website/js/jalalli.js' %}"></script>
+     <script src="{% static 'website/js/bootstrap-colorpicker.min.js' %}"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+     <!-- Plugins and scripts required by this views -->
+ 
+     <!-- Custom scripts required by this view -->
+     <script src="{% static 'website/js/views/main.js' %}"></script>
+ 
+     {% block script %} 
+     
+     {% endblock %}
+     
+ </body>
+ 
+ </html>

@@ -1,0 +1,73 @@
+
+{% extends 'parent.html' %}
+
+{% block title%} صفحه اصلی  {% endblock %}
+
+{% block crumb %}
+خانه
+{% endblock %}
+
+{% block content %}
+
+
+
+
+
+ <div class="row">
+
+        <div class="card" id="payment" style="width: 100%;">
+                        <div class="card-header">اطلاعات ثبت شده</div>
+                        <div class="card-body">
+
+<div class="row">
+
+
+<div class="col-sm-12">
+                        <table class="table table-responsive">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">نام ارسال کننده</th>
+                                    <th class="text-center">نام مقصد</th>
+                                    <th class="text-center">تاریخ ثبت</th>
+                                    <th class="text-center">عملیات</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for l in data %}
+                                <tr>
+                                    <td class="text-center">{{l.CustomerName}}</td>
+                                    <td class="text-center">{{l.CustomerPhone}}</td>
+                                    <td class="text-center">{{l.CustomerBuyed}} ریال </td>
+                                    <td class="text-center">
+                                        <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                    </td>
+
+                                </tr>
+                                {% endfor %}
+
+                            </tbody>
+                        </table>
+
+                    </div>
+
+
+
+</div>
+ </div>
+        </div>
+
+
+
+
+                        </div>
+
+
+
+{% endblock %}
+
+
+  {% block script %}
+  <script>
+
+  </script>
+  {% endblock %}
